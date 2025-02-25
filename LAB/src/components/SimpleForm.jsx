@@ -7,7 +7,9 @@ export const SimpleForm = () => {
     matricula: 'A01285409',
     nombre: 'Gabriel',
     apellido: 'Mujica',
-    edad: 21
+    edad: 21,
+    carrera: ' ',
+    universidad: ' '
   });
 
   const {matricula, nombre, apellido, edad, carrera, universidad} = formState;
