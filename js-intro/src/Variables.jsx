@@ -3,7 +3,7 @@ import React from 'react'
 export const Variables = () => {
     const nombre = "Jorge";
     const apellido = "Carranza";
-    const nombreCompleto = nombre + "" + apellido;
+    const nombreCompleto = nombre + " " + apellido;
     const nombreCom = `${nombre} ${apellido}`;
     console.log( nombreCompleto);
     return (
