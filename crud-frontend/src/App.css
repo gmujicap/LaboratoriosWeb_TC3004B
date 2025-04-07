@@ -12,13 +12,13 @@
   border-bottom: 1px solid #ddd;
 }
 
-.country-list {
+.employee-list {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.country-item {
+.employee-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,16 +28,16 @@
   margin-bottom: 10px;
 }
 
-.country-info {
+.employee-info {
   flex: 1;
 }
 
-.country-info h3 {
+.employee-info h3 {
   margin-top: 0;
   margin-bottom: 8px;
 }
 
-.country-actions {
+.employee-actions {
   display: flex;
   gap: 10px;
 }
@@ -60,7 +60,7 @@ button {
   color: white;
 }
 
-.country-form {
+.employee-form {
   display: flex;
   flex-direction: column;
   gap: 15px;

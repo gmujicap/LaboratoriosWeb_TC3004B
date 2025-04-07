@@ -1,18 +1,18 @@
 import React from 'react';
-import CountryList from './components/CountryList';
+import EmployeeList from './components/EmployeeList';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Administrador de Países</h1>
+        <h1>Administrador de Empleados</h1>
       </header>
       <main>
-        <CountryList />
+        <EmployeeList />
       </main>
       <footer>
-        <p>CRUD de Países © 2025</p>
+        <p>CRUD de Empleados © 2025</p>
       </footer>
     </div>
   );

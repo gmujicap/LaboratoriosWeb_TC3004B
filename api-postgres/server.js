@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const countryRoutes = require('./routes/countryRoutes');
+const employeeRoutes = require('./routes/employeeRoutes');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -13,11 +13,11 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use('/api/countries', countryRoutes);
+app.use('/api/employees', employeeRoutes);
 
 // Ruta de inicio
 app.get('/', (req, res) => {
-  res.send('API de Países funcionando correctamente con PostgreSQL');
+  res.send('API de Empleados funcionando correctamente con PostgreSQL');
 });
 
 // Iniciar servidor

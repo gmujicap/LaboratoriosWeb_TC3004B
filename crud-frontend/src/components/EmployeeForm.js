@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { createCountry, updateCountry } from '../services/api';
+import { createEmployee, updateEmployee } from '../services/api';
 
-const CountryForm = ({ country, onSubmitSuccess, onCancel }) => {
+const EmployeeForm = ({ employee, onSubmitSuccess, onCancel }) => {
   const [formData, setFormData] = useState({
     name: '',
-    capital: '',
-    currency: ''
+    company: '',
+    pos: ''
   });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (country) {
+    if (employee) {
       setFormData({
-        name: country.name || '',
-        capital: country.capital || '',
-        currency: country.currency || ''
+        name: employee.name || '',
+        company: employee.company || '',
+        pos: employee.pos || ''
       });
     }
-  }, [country]);
+  }, [employee]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +32,7 @@ const CountryForm = ({ country, onSubmitSuccess, onCancel }) => {
     e.preventDefault();
     
     if (!formData.name.trim()) {
-      setError('El nombre del país es obligatorio');
+      setError('El nombre del empleado es obligatorio');
       return;
     }
 
@@ -40,23 +40,23 @@ const CountryForm = ({ country, onSubmitSuccess, onCancel }) => {
     setError(null);
 
     try {
-      if (country) {
-        await updateCountry(country.id, formData);
+      if (employee) {
+        await updateEmployee(employee.id, formData);
       } else {
-        await createCountry(formData);
+        await createEmployee(formData);
       }
       
-      setFormData({ name: '', capital: '', currency: '' });
+      setFormData({ name: '', company: '', pos: '' });
       if (onSubmitSuccess) onSubmitSuccess();
     } catch (err) {
-      setError('Error al guardar el país');
+      setError('Error al guardar el empleado');
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="country-form">
+    <form onSubmit={handleSubmit} className="employee-form">
       {error && <div className="error">{error}</div>}
       
       <div className="form-group">
@@ -73,24 +73,24 @@ const CountryForm = ({ country, onSubmitSuccess, onCancel }) => {
       </div>
       
       <div className="form-group">
-        <label htmlFor="capital">Capital:</label>
+        <label htmlFor="company">Empresa:</label>
         <input
           type="text"
-          id="capital"
-          name="capital"
-          value={formData.capital}
+          id="company"
+          name="company"
+          value={formData.company}
           onChange={handleChange}
           disabled={submitting}
         />
       </div>
       
       <div className="form-group">
-        <label htmlFor="currency">Moneda:</label>
+        <label htmlFor="pos">Puesto:</label>
         <input
           type="text"
-          id="currency"
-          name="currency"
-          value={formData.currency}
+          id="pos"
+          name="pos"
+          value={formData.pos}
           onChange={handleChange}
           disabled={submitting}
         />
@@ -98,7 +98,7 @@ const CountryForm = ({ country, onSubmitSuccess, onCancel }) => {
       
       <div className="form-actions">
         <button type="submit" disabled={submitting}>
-          {submitting ? 'Guardando...' : country ? 'Actualizar' : 'Crear'}
+          {submitting ? 'Guardando...' : employee ? 'Actualizar' : 'Crear'}
         </button>
         {onCancel && (
           <button type="button" onClick={onCancel} disabled={submitting}>
@@ -110,4 +110,4 @@ const CountryForm = ({ country, onSubmitSuccess, onCancel }) => {
   );
 };
 
-export default CountryForm;
+export default EmployeeForm;
